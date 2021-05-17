@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_app/pages/ProfileAdmin.dart';
 import 'package:music_app/widgets/SearchField.dart';
 import 'package:music_app/widgets/UserField.dart';
+import 'package:get/get.dart';
 
 class BaseUsers extends StatelessWidget {
   final TextStyle headerStyle = TextStyle(
@@ -42,7 +43,7 @@ class BaseUsers extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 19),
                         child: Text(
-                          'Пользователи',
+                          'title_users'.tr,
                           style: headerStyle,
                         ),
                       ),

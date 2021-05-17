@@ -72,7 +72,7 @@ class User extends StatelessWidget {
                 crossAxisAlignment:
                     CrossAxisAlignment.center, // почему не ставится посередине
                 children: [
-                  Image.asset('assets/profile.png'),
+                  Image.asset('assets/profil.png'),
                   SizedBox(
                     height: 15,
                   ),

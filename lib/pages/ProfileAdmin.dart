@@ -11,8 +11,10 @@ import 'package:music_app/pages/SuccessfulRegistration.dart';
 import 'package:music_app/widgets/HoleButton.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
 import 'package:music_app/pages/Info.dart';
+import 'package:get/get.dart';
 
 class ProfileAdmin extends StatelessWidget {
+
   final TextStyle loginStyle = TextStyle(
     color: Color.fromRGBO(99, 94, 226, 1),
     fontSize: 20,
@@ -28,6 +30,52 @@ class ProfileAdmin extends StatelessWidget {
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
+
+  final locales = [
+    {
+      'name': 'Russian',
+      'locale': Locale('ru', 'RU')
+    },
+    {
+      'name': 'English',
+      'locale': Locale('en', 'US')
+    },
+    {
+      'name': 'Espanol',
+      'locale': Locale('es', 'ES')
+    }
+  ];
+
+  showLocaleDialog(BuildContext context){
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: Text("Choose your language"),
+          content: Container(
+            width: double.maxFinite,
+            child: ListView.separated(
+              shrinkWrap: true,
+                itemBuilder: (context, index) => InkWell(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(locales[index]['name']),
+                  ),
+                onTap: () => updateLocale(locales[index]['locale'], context),),
+                separatorBuilder: (context, index) => Divider(
+                  color: Colors.black,
+                ),
+                itemCount: 3,
+            ),
+          ),
+        ),
+    );
+  }
+
+  updateLocale(Locale locale, BuildContext context){
+    Navigator.of(context).pop();
+    Get.updateLocale(locale);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +93,7 @@ class ProfileAdmin extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Профиль',
+                    'title_admin'.tr,
                     style: headerStyle,
                   ),
                 ],
@@ -70,7 +118,7 @@ class ProfileAdmin extends StatelessWidget {
                 crossAxisAlignment:
                     CrossAxisAlignment.center, // почему не ставится посередине
                 children: [
-                  Image.asset('assets/profile.png'),
+                  Image.asset('assets/profil.png'),
                   SizedBox(
                     height: 15,
                   ),
@@ -83,7 +131,7 @@ class ProfileAdmin extends StatelessWidget {
               Container(
                   margin: EdgeInsets.only(top: 32),
                   child: HoleButton(
-                    'Выйти',
+                    'button_admin'.tr,
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -95,7 +143,7 @@ class ProfileAdmin extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Добавить песню',
+                    'button1_admin'.tr,
                     style: textStyle,
                   ),
                   Spacer(),
@@ -103,19 +151,14 @@ class ProfileAdmin extends StatelessWidget {
                     height: 25,
                     minWidth: 20,
                     child: Image.asset('assets/to.png'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Info()),
-                      );
-                    },
+                    onPressed: ()  => showLocaleDialog(context),
                   ),
                 ],
               ),
               Row(
                 children: [
                   Text(
-                    'Пользователи',
+                    'button2_admin'.tr,
                     style: textStyle,
                   ),
                   Spacer(),
@@ -135,7 +178,7 @@ class ProfileAdmin extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Песни',
+                    'button3_admin'.tr,
                     style: textStyle,
                   ),
                   Spacer(),

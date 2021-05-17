@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_app/pages/ProfileAdmin.dart';
 import 'package:music_app/widgets/SearchField.dart';
 import 'package:music_app/widgets/Song.dart';
-
+import 'package:get/get.dart';
 class SongsAdmin extends StatelessWidget {
   final TextStyle headerStyle = TextStyle(
     color: Color.fromRGBO(11, 7, 94, 1),

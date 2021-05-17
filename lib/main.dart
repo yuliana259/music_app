@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:music_app/myApp_translations.dart';
 import 'package:music_app/pages/BaseUsers.dart';
 import 'package:music_app/pages/GreetUser.dart';
 import 'package:music_app/pages/Player.dart';
+import 'package:music_app/pages/ProfileAdmin.dart';
 import 'package:music_app/pages/SearchPage.dart';
+import 'package:music_app/pages/User.dart';
 import 'package:music_app/widgets/PlayingSong.dart';
 
 void main() {
@@ -13,13 +17,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      translations: MyAppTranslations(),
+      locale: Get.deviceLocale,
       title: 'Music App',
       theme: ThemeData(
         textTheme: GoogleFonts.comfortaaTextTheme(),
         primarySwatch: Colors.blue,
       ),
-      home: BaseUsers(),
+      home: ProfileAdmin(),
     );
   }
 }
