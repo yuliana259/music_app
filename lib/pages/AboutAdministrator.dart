@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/pages/User.dart';
-import 'package:flutter/material.dart';
-import 'package:music_app/pages/SuccessfulRegistration.dart';
-import 'package:music_app/widgets/InputField.dart';
-import 'package:music_app/widgets/GradientButton.dart';
+import 'package:get/get.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
 
 class AboutAdministrator extends StatelessWidget {
@@ -55,7 +52,7 @@ class AboutAdministrator extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 19),
                         child: Text(
-                          'Administrator',
+                          'title_administrator'.tr,
                           style: headerStyle,
                         ),
                       ),
@@ -67,17 +64,16 @@ class AboutAdministrator extends StatelessWidget {
                 height: 27,
               ),
               Text(
-                'Кто такой администратор?',
+                'subtitle_admin'.tr,
                 style: header2Style,
               ),
               SizedBox(
-                height: 15,
+                height: 30,
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 17),
                 child: Text(
-                  'Администратор добавляет новую музыку, тексты к ней. '
-                  'также иммееет доступ к базе данных пользователей приложения',
+                  'text_admin'.tr,
                   style: textStyle,
                 ),
               ),

@@ -14,7 +14,6 @@ import 'package:music_app/pages/Info.dart';
 import 'package:get/get.dart';
 
 class ProfileAdmin extends StatelessWidget {
-
   final TextStyle loginStyle = TextStyle(
     color: Color.fromRGBO(99, 94, 226, 1),
     fontSize: 20,
@@ -32,46 +31,39 @@ class ProfileAdmin extends StatelessWidget {
   );
 
   final locales = [
-    {
-      'name': 'Russian',
-      'locale': Locale('ru', 'RU')
-    },
-    {
-      'name': 'English',
-      'locale': Locale('en', 'US')
-    },
-    {
-      'name': 'Espanol',
-      'locale': Locale('es', 'ES')
-    }
+    {'name': 'Russian', 'locale': Locale('ru', 'RU')},
+    {'name': 'English', 'locale': Locale('en', 'US')},
+    {'name': 'Espanol', 'locale': Locale('es', 'ES')}
   ];
 
-  showLocaleDialog(BuildContext context){
+  showLocaleDialog(BuildContext context) {
     showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-          title: Text("Choose your language"),
-          content: Container(
-            width: double.maxFinite,
-            child: ListView.separated(
-              shrinkWrap: true,
-                itemBuilder: (context, index) => InkWell(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(locales[index]['name']),
-                  ),
-                onTap: () => updateLocale(locales[index]['locale'], context),),
-                separatorBuilder: (context, index) => Divider(
-                  color: Colors.black,
-                ),
-                itemCount: 3,
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Choose your language"),
+        content: Container(
+          width: double.maxFinite,
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (context, index) => InkWell(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(locales[index]['name']),
+              ),
+              onTap: () => updateLocale(locales[index]['locale'], context),
             ),
+            separatorBuilder: (context, index) => Divider(
+              color: Colors.deepPurple,
+              thickness: 1,
+            ),
+            itemCount: 3,
           ),
         ),
+      ),
     );
   }
 
-  updateLocale(Locale locale, BuildContext context){
+  updateLocale(Locale locale, BuildContext context) {
     Navigator.of(context).pop();
     Get.updateLocale(locale);
   }
@@ -98,7 +90,6 @@ class ProfileAdmin extends StatelessWidget {
                   ),
                 ],
               ),
-
               SizedBox(
                 height: 17,
               ),
@@ -139,7 +130,9 @@ class ProfileAdmin extends StatelessWidget {
                       );
                     },
                   )),
-              SizedBox(height:45 ,),
+              SizedBox(
+                height: 45,
+              ),
               Row(
                 children: [
                   Text(
@@ -151,7 +144,7 @@ class ProfileAdmin extends StatelessWidget {
                     height: 25,
                     minWidth: 20,
                     child: Image.asset('assets/to.png'),
-                    onPressed: ()  => showLocaleDialog(context),
+                    onPressed: () => showLocaleDialog(context),
                   ),
                 ],
               ),

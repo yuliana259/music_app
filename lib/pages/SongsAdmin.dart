@@ -3,6 +3,7 @@ import 'package:music_app/pages/ProfileAdmin.dart';
 import 'package:music_app/widgets/SearchField.dart';
 import 'package:music_app/widgets/Song.dart';
 import 'package:get/get.dart';
+
 class SongsAdmin extends StatelessWidget {
   final TextStyle headerStyle = TextStyle(
     color: Color.fromRGBO(11, 7, 94, 1),
@@ -19,7 +20,9 @@ class SongsAdmin extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   MaterialButton(
@@ -42,7 +45,7 @@ class SongsAdmin extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 19),
                         child: Text(
-                          'Песни',
+                          'titile_songs'.tr,
                           style: headerStyle,
                         ),
                       ),
@@ -53,11 +56,14 @@ class SongsAdmin extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(vertical: 15),
                 child: SearchField(
-                  defaultValue: 'Введи свой запрос',
+                  defaultValue: 'field_songs'.tr,
                   secured: false,
                 ),
               ),
-              Song('dua lipa','levitating',Image.asset('assets/dua.png')),
+              SizedBox(
+                height: 12,
+              ),
+              Song('dua lipa', 'levitating', Image.asset('assets/dua.png')),
             ],
           ),
         ),

@@ -22,13 +22,13 @@ class SuccessfulRegistration extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 20),
               padding: EdgeInsets.only(top: 64, bottom: 36),
               child: Text(
-                'Ура!',
+                'Cheer!',
                 style: textStyle,
                 textAlign: TextAlign.center,
               ),
             ),
             Text(
-              'Ты успешно зарегестрировался в приложении!',
+              'You have successfully registered in the MusicApp! Rather, go to the app',
               style: textStyle,
               textAlign: TextAlign.center,
             ),
@@ -38,7 +38,7 @@ class SuccessfulRegistration extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 17),
               child: GradientButton(
-                'Продолжить',
+                'Go',
                 onPressed: () {
                   Navigator.push(
                     context,

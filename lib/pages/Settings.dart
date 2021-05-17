@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_app/pages/Info.dart';
 import 'package:music_app/pages/User.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
+import 'package:get/get.dart';
 
 class Settings extends StatelessWidget {
   final TextStyle headerStyle = TextStyle(
@@ -19,6 +20,45 @@ class Settings extends StatelessWidget {
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
+
+  final locales = [
+    {'name': 'Russian', 'locale': Locale('ru', 'RU')},
+    {'name': 'English', 'locale': Locale('en', 'US')},
+    {'name': 'Espanol', 'locale': Locale('es', 'ES')}
+  ];
+
+  showLocaleDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Choose your language"),
+        content: Container(
+          width: double.maxFinite,
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (context, index) => InkWell(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(locales[index]['name']),
+              ),
+              onTap: () => updateLocale(locales[index]['locale'], context),
+            ),
+            separatorBuilder: (context, index) => Divider(
+              color: Colors.deepPurple,
+              thickness: 1,
+            ),
+            itemCount: 3,
+          ),
+        ),
+      ),
+    );
+  }
+
+  updateLocale(Locale locale, BuildContext context) {
+    Navigator.of(context).pop();
+    Get.updateLocale(locale);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +88,7 @@ class Settings extends StatelessWidget {
                     width: 60,
                   ),
                   Text(
-                    'Settings',
+                    'title_settings'.tr,
                     style: headerStyle,
                   ),
                 ],
@@ -57,7 +97,7 @@ class Settings extends StatelessWidget {
                 height: 76,
               ),
               Text(
-                'Help',
+                'subtitle_settings'.tr,
                 style: header2Style,
               ),
               SizedBox(
@@ -66,7 +106,7 @@ class Settings extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'About app',
+                    'button1_settings'.tr,
                     style: textStyle,
                   ),
                   Spacer(),
@@ -89,7 +129,7 @@ class Settings extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'English version',
+                    'button2_settings'.tr,
                     style: textStyle,
                   ),
                   Spacer(),
@@ -97,12 +137,7 @@ class Settings extends StatelessWidget {
                     height: 25,
                     minWidth: 20,
                     child: Image.asset('assets/to.png'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Settings()),
-                      );
-                    },
+                    onPressed: () => showLocaleDialog(context),
                   ),
                 ],
               ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:music_app/pages/AboutAdministrator.dart';
-import 'package:music_app/pages/Entrance.dart';
 import 'package:music_app/pages/GreetUser.dart';
 import 'package:music_app/pages/Settings.dart';
 import 'package:music_app/widgets/GradientButton.dart';
-import 'package:music_app/pages/SuccessfulRegistration.dart';
 import 'package:music_app/widgets/HoleButton.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
+import 'package:music_app/widgets/UserLogin.dart';
 
 class User extends StatelessWidget {
   final TextStyle loginStyle = TextStyle(
@@ -36,7 +36,7 @@ class User extends StatelessWidget {
                 // вместо текста вставить кнопки с иконками(картинками)
                 children: [
                   Text(
-                    'Профиль',
+                    'title_user'.tr,
                     style: headerStyle,
                   ),
                   Spacer(),
@@ -76,16 +76,14 @@ class User extends StatelessWidget {
                   SizedBox(
                     height: 15,
                   ),
-                  Text(
-                    'voronova_yuliana',
-                    style: loginStyle,
-                  ),
+                  UserLogin('v0ronovva_yuliana'),
                 ],
               ),
               Container(
                   margin: EdgeInsets.only(top: 123),
                   child: GradientButton(
-                    'Администраторы', // изменить нажатие на кнопку администраторы
+                    'button1_user'
+                        .tr, // изменить нажатие на кнопку администраторы
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -97,7 +95,7 @@ class User extends StatelessWidget {
               Container(
                   margin: EdgeInsets.only(top: 32),
                   child: HoleButton(
-                    'Выйти',
+                    'button2_user'.tr,
                     onPressed: () {
                       Navigator.push(
                         context,

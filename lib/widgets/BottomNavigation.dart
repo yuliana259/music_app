@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:music_app/pages/MainPage.dart';
 import 'package:music_app/pages/SearchPage.dart';
 import 'package:music_app/pages/User.dart';
+
 enum NavigationItem {
   MAIN,
   SEARCH,
   ACCOUNT,
 }
 
-Widget BottomNavigation(NavigationItem currentNav, BuildContext context) => BottomNavigationBar(
+Widget BottomNavigation(NavigationItem currentNav, BuildContext context) =>
+    BottomNavigationBar(
       backgroundColor: Color.fromRGBO(242, 242, 242, 1),
       onTap: (value) {
-        switch(value) {
-          case 0
-            :
+        switch (value) {
+          case 0:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MainPage()),);
-          break;
-          case 1
-              :
+              MaterialPageRoute(builder: (context) => MainPage()),
+            );
+            break;
+          case 1:
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => SearchPage()),
             );
-          break;
-          case 2
-              :
+            break;
+          case 2:
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => User()),
@@ -41,8 +42,7 @@ Widget BottomNavigation(NavigationItem currentNav, BuildContext context) => Bott
             size: 30,
             color: Color.fromRGBO(40, 36, 138, 1),
           ),
-          label:
-            "Главная",
+          label: 'first'.tr,
         ),
         BottomNavigationBarItem(
           icon: Icon(
@@ -50,8 +50,7 @@ Widget BottomNavigation(NavigationItem currentNav, BuildContext context) => Bott
             size: 30,
             color: Color.fromRGBO(40, 36, 138, 1),
           ),
-          label:
-            "Поиск",
+          label: 'second'.tr,
         ),
         BottomNavigationBarItem(
           icon: Icon(
@@ -59,8 +58,7 @@ Widget BottomNavigation(NavigationItem currentNav, BuildContext context) => Bott
             size: 30,
             color: Color.fromRGBO(40, 36, 138, 1),
           ),
-          label:
-            "Аккаунт",
+          label: 'third'.tr,
         )
       ],
     );

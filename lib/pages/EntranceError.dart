@@ -4,7 +4,6 @@ import 'package:music_app/widgets/GradientButtonBlocked.dart';
 import 'package:music_app/widgets/InputField.dart';
 import 'package:music_app/widgets/GradientButton.dart';
 
-
 class EntranceError extends StatelessWidget {
   final TextStyle textStyle = TextStyle(
     color: Color.fromRGBO(11, 7, 94, 1),
@@ -22,7 +21,7 @@ class EntranceError extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top: 40),
                 child: Text(
-                  'Введи свою почту',
+                  'Input ypur e-mail',
                   style: textStyle,
                 ),
               ),
@@ -33,7 +32,7 @@ class EntranceError extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top: 30),
                 child: Text(
-                  'Введи свой пароль',
+                  'Input your password',
                   style: textStyle,
                 ),
               ),
@@ -48,16 +47,17 @@ class EntranceError extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                '! Указана неверная почта или пароль!'
-                    'Проверь введенные данные',
-                style: GoogleFonts.montserrat(fontSize: 18, color: Color.fromRGBO(246, 11, 11, 0.68)),
+                '! Invalid email address ar password specified!'
+                'check the entered data',
+                style: GoogleFonts.montserrat(
+                    fontSize: 18, color: Color.fromRGBO(246, 11, 11, 0.68)),
                 // style: TextStyle(
                 //     color: Color.fromRGBO(246, 11, 11, 0.68), fontSize: 18),
               ),
               SizedBox(
                 height: 60,
               ),
-              GradientButton('Вход', onPressed: () => print('Privet'))
+              GradientButton('Log in', onPressed: () => print('Privet'))
             ],
           ),
         ),

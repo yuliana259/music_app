@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:music_app/pages/SearchPage.dart';
 import 'package:music_app/pages/Settings.dart';
- class PlayingSong extends StatelessWidget {
+
+class PlayingSong extends StatefulWidget {
   final String artistName;
   final String songName;
   final Image image;
@@ -18,11 +19,23 @@ import 'package:music_app/pages/Settings.dart';
     fontSize: 20,
     //fontWeight: FontWeight.bold,
   );
+
+  bool playing = false; // at the beggining we are not playing any song
+  IconData playBtn = Icons.play_arrow; // the main state of the play button icon
+
+
   @override
+  _PlayingSongState
+
+  extends
+
+  State<PlayingSong>
+
+  {
+
   Widget build(BuildContext context) {
     return Container(
-      child:
-      Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MaterialButton(
@@ -36,33 +49,37 @@ import 'package:music_app/pages/Settings.dart';
               );
             },
           ),
-          SizedBox(height: 26,),
+          SizedBox(
+            height: 26,
+          ),
           Center(child: image),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           Center(
             child: Text(
               artistName,
               style: artistStyle,
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Center(
             child: Text(
               songName,
               style: nameStyle,
             ),
           ),
-          SizedBox(
-            height: 40,
-          ),
-          Container(
-            // линия
+
+          /*Container(
+              // линия
               decoration: BoxDecoration(
-                //borderRadius: BorderRadius.all(Radius.circular(2)),
-                   color: Colors.deepPurpleAccent),
-              height: 3),
-          SizedBox(height: 40,),
-          Row(
+                  //borderRadius: BorderRadius.all(Radius.circular(2)),
+                  color: Colors.deepPurpleAccent),
+              height: 3), */
+
+          /* Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MaterialButton(
@@ -84,18 +101,58 @@ import 'package:music_app/pages/Settings.dart';
                 onPressed: () => print('Privet'),
               ),
             ],
+          ),*/
+          SizedBox(
+            height: 60,
           ),
-          SizedBox(height: 60,),
-          Container(
-            // линия
+          /*Container(
+              // линия
               decoration: BoxDecoration(
-                //borderRadius: BorderRadius.all(Radius.circular(2)),
+                  //borderRadius: BorderRadius.all(Radius.circular(2)),
                   gradient: LinearGradient(colors: [
-                    Color.fromRGBO(168, 219, 250, 1),
-                    Color.fromRGBO(99, 94, 226, 1),
-                  ])),
-              height: 2),
+                Color.fromRGBO(168, 219, 250, 1),
+                Color.fromRGBO(99, 94, 226, 1),
+              ])),
+              height: 2), */
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              IconButton(
+                  iconSize: 45,
+                  color: Colors.deepPurple,
+                  icon: Icon(
+                    Icons.skip_previous,
+                  ),
+                  onPressed: () {}),
+              IconButton(
+                  iconSize: 62,
+                  color: Colors.deepPurple,
+                  icon: Icon(
+                    Icons.play_arrow,
+                  ),
+                  onPressed: () {
+                    // here will add the functionality of the play button
+                    if (!playing) {
+                      setState(() {
+                        playBtn = Icons.pause;
+                        playing = true;
+                      });
+                    } else {
+                      playBtn = Icons.play_arrow;
+                      playing = false;
+                    }
+                  }),
+              IconButton(
+                  iconSize: 45,
+                  color: Colors.deepPurple,
+                  icon: Icon(
+                    Icons.skip_next,
+                  ),
+                  onPressed: () {}),
+            ],
+          )
+          /*Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MaterialButton(
@@ -112,9 +169,11 @@ import 'package:music_app/pages/Settings.dart';
               ),
             ],
 
-          ),
+          ),*/
         ],
       ),
     );
   }
-}
+}}
+
+ */

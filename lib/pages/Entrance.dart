@@ -20,7 +20,7 @@ class Entrance extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top: 40),
                 child: Text(
-                  'Введи свою почту',
+                  'Input your e-mail',
                   style: textStyle,
                 ),
               ),
@@ -31,7 +31,7 @@ class Entrance extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top: 30),
                 child: Text(
-                  'Введи свой пароль',
+                  'Input your password',
                   style: textStyle,
                 ),
               ),
@@ -45,12 +45,15 @@ class Entrance extends StatelessWidget {
               SizedBox(
                 height: 30,
               ),
-              GradientButton('Вход', onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MainPage()),
-                );
-              },)
+              GradientButton(
+                'Log in',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MainPage()),
+                  );
+                },
+              )
             ],
           ),
         ),

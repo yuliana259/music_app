@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:music_app/pages/MainPage.dart';
-import 'package:music_app/widgets/ButtonMainPage1.dart';
-import 'package:music_app/widgets/InputField.dart';
+import 'package:music_app/pages/Player.dart';
+import 'package:music_app/pages/MusicApp.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
-import 'package:music_app/widgets/ButtonMainPage2.dart';
 import 'package:music_app/widgets/SearchField.dart';
 import 'package:music_app/widgets/Song.dart';
 
@@ -39,9 +39,9 @@ class SearchPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Поиск',
+                      'title_search'.tr,
                       style: textStyle,
-                      textAlign: TextAlign.left, //??????????
+                      textAlign: TextAlign.left,
                     ),
                     SizedBox(
                       height: 17,
@@ -59,21 +59,24 @@ class SearchPage extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.only(top: 15),
                       child: SearchField(
-                        defaultValue: 'Введи свой запрос',
+                        defaultValue: 'field_search'.tr,
                         secured: false,
                       ),
                     ),
                   ],
                 ),
               ),
-              Song('Dua Lipa', 'Love again',Image.asset('assets/dua.png'),
+              Song(
+                'Dua Lipa',
+                'Love again',
+                Image.asset('assets/dua.png'),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MainPage()),
+                    MaterialPageRoute(builder: (context) => MusicApp()),
                   );
-                }, ),
-
+                },
+              ),
             ],
           ),
         ),

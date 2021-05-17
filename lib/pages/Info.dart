@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/pages/Settings.dart';
-import 'package:music_app/pages/User.dart';
+import 'package:get/get.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
 
 class Info extends StatelessWidget {
@@ -43,7 +43,7 @@ class Info extends StatelessWidget {
                     width: 60,
                   ),
                   Text(
-                    'About App',
+                    'title_app'.tr,
                     style: headerStyle,
                   ),
                 ],
@@ -56,7 +56,7 @@ class Info extends StatelessWidget {
                 height: 52,
               ),
               Text(
-                'Версия 1.1',
+                'subtitle_app'.tr,
                 style: textStyle,
               ),
               SizedBox(
@@ -70,7 +70,7 @@ class Info extends StatelessWidget {
                 height: 6,
               ),
               Text(
-                'kursach yulianki',
+                'text_app'.tr,
                 style: TextStyle(
                   color: Color.fromRGBO(11, 7, 94, 1),
                   fontSize: 16,

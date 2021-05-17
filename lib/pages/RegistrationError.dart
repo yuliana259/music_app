@@ -19,7 +19,7 @@ class RegistrationError extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top: 40),
                 child: Text(
-                  'Введи свою почту',
+                  'Input your e-mail',
                   style: textStyle,
                   textAlign: TextAlign.left, //??????????
                 ),
@@ -32,14 +32,14 @@ class RegistrationError extends StatelessWidget {
                 height: 15,
               ),
               Text(
-                'Упс! Эта почта уже занята(',
+                'Oops! this e-mail is already occupied(',
                 style: TextStyle(
                     color: Color.fromRGBO(246, 11, 11, 0.68), fontSize: 18),
               ),
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Text(
-                  'Введи свой пароль',
+                  'Input your password',
                   style: textStyle,
                   textAlign: TextAlign.left,
                 ),
@@ -53,8 +53,8 @@ class RegistrationError extends StatelessWidget {
               ),
               Container(
                 margin: EdgeInsets.only(top: 40),
-                child: GradientButton('Регистрация',
-                    onPressed: () => print('Privet')),
+                child:
+                    GradientButton('Sign up', onPressed: () => print('Privet')),
               )
             ],
           ),

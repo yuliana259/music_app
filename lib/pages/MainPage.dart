@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:music_app/pages/ErrorPlaylist.dart';
 import 'package:music_app/pages/TopSongs.dart';
 import 'package:music_app/widgets/ButtonMainPage1.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
@@ -25,7 +27,7 @@ class MainPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Главная',
+                      'title_main'.tr,
                       style: textStyle,
                       textAlign: TextAlign.left, //??????????
                     ),
@@ -50,7 +52,7 @@ class MainPage extends StatelessWidget {
                     //margin: EdgeInsets.only(top: 1),
                     child: ButtonMainPage1(
                       SizeButton.BIG,
-                      'Топ 10 в Беларуси',
+                      'button1_main'.tr,
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -66,15 +68,26 @@ class MainPage extends StatelessWidget {
                         //margin: EdgeInsets.only(top: 10),
                         child: ButtonMainPage1(
                           SizeButton.SMALL,
-                          'Русский поп',
-                          onPressed: () => print('Privet'),
+                          'button2_main'.tr,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ErrorPlaylist()),
+                            );
+                          },
                           color: Colors.green,
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 8),
-                        child: ButtonMainPage1(SizeButton.SMALL, 'Лучшее',
-                            onPressed: () => print('Privet'),
+                        child: ButtonMainPage1(
+                            SizeButton.SMALL, 'button3_main'.tr,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => ErrorPlaylist()),
+                              );
+                            },
                             color: Colors.amberAccent),
                       ),
                     ],
@@ -90,15 +103,21 @@ class MainPage extends StatelessWidget {
                         //margin: EdgeInsets.only(top: 10),
                         child: ButtonMainPage1(
                           SizeButton.SMALL,
-                          'Русский поп',
-                          onPressed: () => print('Privet'),
+                          'button2_main'.tr,
+                          onPressed: () => ErrorPlaylist(),
                           color: Colors.red,
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 8),
-                        child: ButtonMainPage1(SizeButton.SMALL, 'Лучшее',
-                            onPressed: () => print('Privet'),
+                        child: ButtonMainPage1(
+                            SizeButton.SMALL, 'button3_main'.tr,
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => ErrorPlaylist()),
+                              );
+                            },
                             color: Colors.lightGreenAccent),
                       ),
                     ],
@@ -108,8 +127,13 @@ class MainPage extends StatelessWidget {
                     //margin: EdgeInsets.only(top: 1),
                     child: ButtonMainPage1(
                       SizeButton.BIG,
-                      'Топ 10 в Беларуси',
-                      onPressed: () => print('Privet'),
+                      'button1_main'.tr,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ErrorPlaylist()),
+                        );
+                      },
                       color: Colors.cyanAccent,
                     ),
                   ),

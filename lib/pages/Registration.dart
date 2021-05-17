@@ -20,7 +20,7 @@ class Registration extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top: 40),
                 child: Text(
-                  'Введи свою почту',
+                  'Input your e-mail',
                   style: textStyle,
                   textAlign: TextAlign.left, //??????????
                 ),
@@ -32,7 +32,7 @@ class Registration extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top: 30),
                 child: Text(
-                  'Введи свой пароль',
+                  'Input your password',
                   style: textStyle,
                   textAlign: TextAlign.left, //??????????
                 ),
@@ -47,7 +47,7 @@ class Registration extends StatelessWidget {
               Container(
                   margin: EdgeInsets.only(top: 40),
                   child: GradientButton(
-                    'Регистрация',
+                    'Sign up',
                     onPressed: () {
                       Navigator.push(
                         context,

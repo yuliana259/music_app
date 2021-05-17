@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:get/get.dart';
+import 'package:music_app/pages/Player.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
-
 import 'package:music_app/pages/MainPage.dart';
-
 import 'package:music_app/widgets/Song.dart';
 
 class TopSongs extends StatelessWidget {
@@ -39,7 +37,7 @@ class TopSongs extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'TOP',
+                      'titile_top'.tr,
                       style: textStyle,
                       textAlign: TextAlign.left, //??????????
                     ),
@@ -59,13 +57,17 @@ class TopSongs extends StatelessWidget {
                   ],
                 ),
               ),
-              Song('Dua Lipa', 'Love again',Image.asset('assets/dua.png'),
+              Song(
+                'Dua Lipa',
+                'Love again',
+                Image.asset('assets/dua.png'),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MainPage()),
+                    MaterialPageRoute(builder: (context) => Player()),
                   );
-                }, ),
+                },
+              ),
             ],
           ),
         ),

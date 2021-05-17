@@ -21,13 +21,13 @@ class GreetGuest extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 20),
               padding: EdgeInsets.only(top: 64, bottom: 36),
               child: Text(
-                'Привет!',
+                'Hi!',
                 style: textStyle,
                 textAlign: TextAlign.center,
               ),
             ),
             Text(
-              'Добро пожаловать в приложение MusicApp!',
+              'Welcome to the MusicApp!',
               style: textStyle,
               textAlign: TextAlign.center,
             ),
@@ -37,7 +37,7 @@ class GreetGuest extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 17),
               child: GradientButton(
-                'Войти',
+                'Log in',
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -50,7 +50,7 @@ class GreetGuest extends StatelessWidget {
               margin: EdgeInsets.only(top: 28),
               padding: EdgeInsets.symmetric(horizontal: 17),
               child: HoleButton(
-                'Регистрация',
+                'Sign up',
                 onPressed: () {
                   Navigator.push(
                     context,

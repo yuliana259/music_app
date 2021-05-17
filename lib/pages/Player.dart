@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/pages/User.dart';
+import 'package:get/get.dart';
 import 'package:music_app/widgets/PlayingSong.dart';
 
 class Player extends StatelessWidget {
@@ -12,7 +12,7 @@ class Player extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 19),
           child: Column(
             children: [
-              PlayingSong('Dua Lipa', 'Love Again', Image.asset('assets/cv.png')),
+              //PlayingSong('Dua Lipa', 'Love Again', Image.asset('assets/cv.png')),
             ],
           ),
         ),

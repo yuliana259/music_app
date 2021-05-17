@@ -20,7 +20,9 @@ class BaseUsers extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   MaterialButton(
@@ -51,15 +53,19 @@ class BaseUsers extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Container(
                 padding: EdgeInsets.only(top: 15),
                 child: SearchField(
-                  defaultValue: 'Введи свой запрос',
+                  defaultValue: 'field_users'.tr,
                   secured: false,
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               UserField('v0ronova', Image.asset('assets/delete.png')),
             ],
           ),
