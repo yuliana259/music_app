@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/pages/Login.dart';
 import 'package:music_app/widgets/GradientButton.dart';
 import 'package:music_app/widgets/HoleButton.dart';
 import 'package:music_app/pages/Registration.dart';
-import 'package:music_app/pages/Entrance.dart';
 
 class GreetGuest extends StatelessWidget {
   final TextStyle textStyle = TextStyle(
@@ -41,7 +41,7 @@ class GreetGuest extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Entrance()),
+                    MaterialPageRoute(builder: (context) => Login()),
                   );
                 },
               ),

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_app/pages/AboutAdministrator.dart';
@@ -97,10 +98,8 @@ class User extends StatelessWidget {
                   child: HoleButton(
                     'button2_user'.tr,
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => GreetGuest()),
-                      );
+                      FirebaseAuth.instance.signOut();
+                      Get.offAll(GreetGuest());
                     },
                   ))
             ],

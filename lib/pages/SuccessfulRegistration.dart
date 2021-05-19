@@ -4,7 +4,7 @@ import 'package:music_app/pages/MainPage.dart';
 import 'package:music_app/widgets/GradientButton.dart';
 import 'package:music_app/widgets/HoleButton.dart';
 import 'package:music_app/pages/Registration.dart';
-import 'package:music_app/pages/Entrance.dart';
+import 'package:music_app/pages/Login.dart';
 
 class SuccessfulRegistration extends StatelessWidget {
   final TextStyle textStyle = TextStyle(

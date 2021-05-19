@@ -6,7 +6,7 @@ import 'package:music_app/widgets/InputField.dart';
 import 'package:music_app/widgets/GradientButton.dart';
 import 'package:music_app/widgets/PageWrapper.dart';
 
-class Registration extends StatelessWidget {
+class Login extends StatelessWidget {
   final TextStyle textStyle = TextStyle(
     color: Color.fromRGBO(11, 7, 94, 1),
     fontSize: 24,
@@ -17,7 +17,7 @@ class Registration extends StatelessWidget {
     final email = TextEditingController();
     final password = TextEditingController();
     return Obx(
-      () => PageWrapper(
+          () => PageWrapper(
         loading: authController.isLoading.value,
         child: Scaffold(
           body: SafeArea(
@@ -57,9 +57,9 @@ class Registration extends StatelessWidget {
                   Container(
                       margin: EdgeInsets.only(top: 20),
                       child: GradientButton(
-                        'Sign up',
+                        'Log in',
                         onPressed: () {
-                          authController.register(email.text, password.text);
+                          authController.login(email.text, password.text);
                         },
                       ))
                 ],
