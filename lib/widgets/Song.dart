@@ -24,6 +24,14 @@ class Song extends StatelessWidget {
     fontSize: 20,
     //fontWeight: FontWeight.bold,
   );
+
+  trimName(String name) {
+    int limit = 16;
+    if(name.length < limit)
+      return name;
+    return name.substring(0, limit) + "...";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,14 +49,14 @@ class Song extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    artistName,
+                    trimName(artistName),
                     style: artistStyle,
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Text(
-                    songName,
+                    trimName(songName),
                     style: nameStyle,
                   ),
                 ],

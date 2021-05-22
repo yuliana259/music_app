@@ -72,7 +72,8 @@ class MainPage extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ErrorPlaylist()),
+                              MaterialPageRoute(
+                                  builder: (context) => ErrorPlaylist()),
                             );
                           },
                           color: Colors.green,
@@ -81,14 +82,13 @@ class MainPage extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(top: 8),
                         child: ButtonMainPage1(
-                            SizeButton.SMALL, 'button3_main'.tr,
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => ErrorPlaylist()),
-                              );
-                            },
-                            color: Colors.amberAccent),
+                            SizeButton.SMALL, 'button3_main'.tr, onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ErrorPlaylist()),
+                          );
+                        }, color: Colors.amberAccent),
                       ),
                     ],
                   ),
@@ -104,21 +104,20 @@ class MainPage extends StatelessWidget {
                         child: ButtonMainPage1(
                           SizeButton.SMALL,
                           'button2_main'.tr,
-                          onPressed: () => ErrorPlaylist(),
+                          onPressed: () => Get.to(ErrorPlaylist()),
                           color: Colors.red,
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 8),
                         child: ButtonMainPage1(
-                            SizeButton.SMALL, 'button3_main'.tr,
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => ErrorPlaylist()),
-                              );
-                            },
-                            color: Colors.lightGreenAccent),
+                            SizeButton.SMALL, 'button3_main'.tr, onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ErrorPlaylist()),
+                          );
+                        }, color: Colors.lightGreenAccent),
                       ),
                     ],
                   ),
@@ -131,7 +130,8 @@ class MainPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ErrorPlaylist()),
+                          MaterialPageRoute(
+                              builder: (context) => ErrorPlaylist()),
                         );
                       },
                       color: Colors.cyanAccent,
@@ -144,11 +144,7 @@ class MainPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigation(NavigationItem.MAIN, context),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: [
-      //     BottomNavigationBarT
-      //   ],
-      // ),
+
     );
   }
 }

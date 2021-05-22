@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/controllers/UsersController.dart';
+import 'package:music_app/models/UserModel.dart';
 import 'package:music_app/pages/ProfileAdmin.dart';
 import 'package:music_app/widgets/SearchField.dart';
 import 'package:music_app/widgets/UserField.dart';
@@ -10,8 +12,14 @@ class BaseUsers extends StatelessWidget {
     fontSize: 32,
     fontWeight: FontWeight.bold,
   );
+  final searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final usersController = Get.put(UsersController());
+
+    usersController.fetchUsers(searchController);
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(251, 251, 251, 1),
       body: SafeArea(
@@ -61,12 +69,39 @@ class BaseUsers extends StatelessWidget {
                 child: SearchField(
                   defaultValue: 'field_users'.tr,
                   secured: false,
+                  controller: searchController,
                 ),
               ),
               SizedBox(
                 height: 30,
               ),
-              UserField('v0ronova', Image.asset('assets/delete.png')),
+              Obx(() {
+                if (usersController.loading.value)
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+
+                var users = usersController.users;
+
+                if (users.length > 0)
+                  return ListView.builder(
+                    itemCount: usersController.users.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      UserModel user = users[index];
+                      if (user.role == "ADMIN")
+                        return SizedBox();
+                      else
+                        return UserField(
+                            email: user.email,
+                            onDelete: () => usersController.deleteUser(user));
+                    },
+                  );
+
+                return Center(
+                  child: Text("Users not found"),
+                );
+              }),
             ],
           ),
         ),

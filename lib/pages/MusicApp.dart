@@ -1,33 +1,27 @@
-import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/controllers/MusicsController.dart';
+import 'package:music_app/models/MusicModel.dart';
 import 'package:music_app/pages/SearchPage.dart';
 import 'package:get/get.dart';
 
 class MusicApp extends StatefulWidget {
+  final MusicModel music;
 
+  MusicApp({this.music});
 
   @override
-  _MusicAppState createState() => _MusicAppState('gg','gg');
+  _MusicAppState createState() => _MusicAppState();
 }
 
 class _MusicAppState extends State<MusicApp> {
-  final String artistName;
-  final String songName;
-
-  _MusicAppState(this.artistName, this.songName); //we will need some variables
-  bool playing = false; // at the begining we are not playing any song
-  IconData playBtn = Icons.play_arrow; // the main state of the play button icon
-
-  //Now let's start by creating our music player
-  //first let's declare some object
+  bool playing = false;
+  IconData playBtn = Icons.play_arrow;
+  MusicModel currentMusic;
   AudioPlayer _player;
-  AudioCache cache;
 
   Duration position = new Duration();
   Duration musicLength = new Duration();
-
-  //we will create a custom slider
 
   Widget slider() {
     return Container(
@@ -43,41 +37,52 @@ class _MusicAppState extends State<MusicApp> {
     );
   }
 
-  //let's create the seek function that will allow us to go to a certain position of the music
   void seekToSec(int sec) {
     Duration newPos = Duration(seconds: sec);
     _player.seek(newPos);
   }
 
-  //Now let's initialize our player
+  void play() {
+    _player.play(currentMusic.songUrl);
+    setState(() {
+      playBtn = Icons.pause;
+      playing = true;
+    });
+  }
+
+  void pause() {
+    _player.pause();
+    setState(() {
+      playBtn = Icons.play_arrow;
+      playing = false;
+    });
+  }
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _player = AudioPlayer();
-    cache = AudioCache(fixedPlayer: _player);
+    currentMusic = this.widget.music;
 
-    //now let's handle the audioplayer time
+    _player.onDurationChanged.listen((duration) => setState(() {
+          musicLength = duration;
+        }));
+    _player.onAudioPositionChanged
+        .listen((pos) => setState(() => position = pos));
+  }
 
-    //this function will allow you to get the music duration
-    _player.durationHandler = (d) {
-      setState(() {
-        musicLength = d;
-      });
-    };
-
-    //this function will allow us to move the cursor of the slider while we are playing the song
-    _player.positionHandler = (p) {
-      setState(() {
-        position = p;
-      });
-    };
+  @override
+  void dispose() {
+    super.dispose();
+    _player.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    List<MusicModel> musics = Get.find<MusicsController>().musics;
+    int currentIndex = musics.indexOf(currentMusic);
+
     return Scaffold(
-      //let's start by creating the main UI of the app
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -109,7 +114,6 @@ class _MusicAppState extends State<MusicApp> {
                     );
                   },
                 ),
-                //Let's add some text title
                 Padding(
                   padding: const EdgeInsets.only(left: 12.0),
                   child: Text(
@@ -121,7 +125,7 @@ class _MusicAppState extends State<MusicApp> {
                     ),
                   ),
                 ),
-                SizedBox(height:10),
+                SizedBox(height: 10),
                 Padding(
                   padding: EdgeInsets.only(left: 12.0),
                   child: Text(
@@ -136,25 +140,18 @@ class _MusicAppState extends State<MusicApp> {
                 SizedBox(
                   height: 24.0,
                 ),
-                //Let's add the music cover
                 Center(
-                  child: Container(
-                    width: 200.0,
-                    height: 200.0,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        image: DecorationImage(
-                          image: AssetImage("assets/itunes.png"),
-                        )),
-                  ),
-                ),
-
+                    child: Image.network(
+                  currentMusic.imageUrl,
+                  width: 200,
+                  height: 200,
+                )),
                 SizedBox(
                   height: 18.0,
                 ),
                 Center(
                   child: Text(
-                    songName,
+                    currentMusic.songName,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 32.0,
@@ -167,7 +164,7 @@ class _MusicAppState extends State<MusicApp> {
                 ),
                 Center(
                   child: Text(
-                    artistName,
+                    currentMusic.artistName,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24.0,
@@ -191,9 +188,6 @@ class _MusicAppState extends State<MusicApp> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        //Let's start by adding the controller
-                        //let's add the time indicator text
-
                         Container(
                           width: 500.0,
                           child: Row(
@@ -223,7 +217,17 @@ class _MusicAppState extends State<MusicApp> {
                             IconButton(
                               iconSize: 45.0,
                               color: Colors.blue,
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  if (currentIndex == 0) {
+                                    currentMusic = musics[musics.length - 1];
+                                  } else
+                                    currentMusic = musics[currentIndex - 1];
+                                  pause();
+                                  position = Duration();
+                                  musicLength = Duration();
+                                });
+                              },
                               icon: Icon(
                                 Icons.skip_previous,
                               ),
@@ -234,18 +238,9 @@ class _MusicAppState extends State<MusicApp> {
                               onPressed: () {
                                 //here we will add the functionality of the play button
                                 if (!playing) {
-                                  //now let's play the song
-                                  cache.play("bruno.mp3");
-                                  setState(() {
-                                    playBtn = Icons.pause;
-                                    playing = true;
-                                  });
+                                  play();
                                 } else {
-                                  _player.pause();
-                                  setState(() {
-                                    playBtn = Icons.play_arrow;
-                                    playing = false;
-                                  });
+                                  pause();
                                 }
                               },
                               icon: Icon(
@@ -255,7 +250,17 @@ class _MusicAppState extends State<MusicApp> {
                             IconButton(
                               iconSize: 45.0,
                               color: Colors.blue,
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  if (currentIndex == musics.length - 1)
+                                    currentMusic = musics[0];
+                                  else
+                                    currentMusic = musics[currentIndex + 1];
+                                  pause();
+                                  position = Duration();
+                                  musicLength = Duration();
+                                });
+                              },
                               icon: Icon(
                                 Icons.skip_next,
                               ),

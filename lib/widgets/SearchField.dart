@@ -5,18 +5,16 @@ import 'package:flutter/services.dart';
 class SearchField extends StatelessWidget {
   final String defaultValue;
   final bool secured;
-  SearchField({this.defaultValue, this.secured = false});
+  final TextEditingController controller;
+  SearchField({this.defaultValue, this.secured = false, this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        //border: Border.all(color: Color.fromRGBO(11, 7, 94, 1)),
-        //borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
       height: 40,
       child: TextField(
+          controller: controller,
           obscureText: secured,
           decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
@@ -25,7 +23,10 @@ class SearchField extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
-              prefixIcon: Icon(Icons.search, color: Color.fromRGBO(11, 7, 94, 1),),
+              prefixIcon: Icon(
+                Icons.search,
+                color: Color.fromRGBO(11, 7, 94, 1),
+              ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Color.fromRGBO(99, 94, 226, 1)),
                 borderRadius: BorderRadius.all(Radius.circular(20)),

@@ -77,7 +77,7 @@ class User extends StatelessWidget {
                   SizedBox(
                     height: 15,
                   ),
-                  UserLogin('v0ronovva_yuliana'),
+                  UserLogin(FirebaseAuth.instance.currentUser.email),
                 ],
               ),
               Container(
@@ -99,7 +99,7 @@ class User extends StatelessWidget {
                     'button2_user'.tr,
                     onPressed: () {
                       FirebaseAuth.instance.signOut();
-                      Get.offAll(GreetGuest());
+                      Get.offAll(() => GreetGuest());
                     },
                   ))
             ],

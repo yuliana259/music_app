@@ -7,13 +7,13 @@ import 'package:music_app/widgets/GradientButton.dart';
 import 'package:music_app/widgets/PageWrapper.dart';
 
 class Login extends StatelessWidget {
+  final authController = Get.put(AuthController());
   final TextStyle textStyle = TextStyle(
     color: Color.fromRGBO(11, 7, 94, 1),
     fontSize: 24,
   );
   @override
   Widget build(BuildContext context) {
-    final authController = Get.put(AuthController());
     final email = TextEditingController();
     final password = TextEditingController();
     return Obx(

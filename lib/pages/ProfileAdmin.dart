@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/pages/AboutAdministrator.dart';
 import 'package:music_app/pages/BaseUsers.dart';
+import 'package:music_app/pages/BlankScreen.dart';
 import 'package:music_app/pages/Login.dart';
 import 'package:music_app/pages/GreetUser.dart';
 import 'package:music_app/pages/SearchPage.dart';
@@ -114,22 +116,17 @@ class ProfileAdmin extends StatelessWidget {
                     height: 15,
                   ),
                   Text(
-                    'voronova_yuliana',
+                    FirebaseAuth.instance.currentUser.email,
                     style: loginStyle,
                   ),
                 ],
               ),
               Container(
                   margin: EdgeInsets.only(top: 32),
-                  child: HoleButton(
-                    'button_admin'.tr,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => GreetGuest()),
-                      );
-                    },
-                  )),
+                  child: HoleButton('button_admin'.tr, onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Get.offAll(() => GreetGuest());
+                  })),
               SizedBox(
                 height: 45,
               ),

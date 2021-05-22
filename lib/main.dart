@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:music_app/myApp_translations.dart';
+import 'package:music_app/pages/BlankScreen.dart';
 import 'package:music_app/pages/GreetUser.dart';
 import 'package:music_app/pages/MainPage.dart';
 
@@ -17,6 +18,7 @@ main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return GetMaterialApp(
       translations: MyAppTranslations(),
       locale: Get.deviceLocale,
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
-          FirebaseAuth.instance.currentUser == null ? GreetGuest() : MainPage(),
+          BlankScreen(),
     );
   }
 }

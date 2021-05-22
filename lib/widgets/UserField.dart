@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 class UserField extends StatelessWidget {
-  final String userName;
-  final Image image;
+  final String email;
+  final Function onDelete;
 
-  UserField(this.userName, this.image);
+  UserField({this.email, this.onDelete});
 
   final TextStyle userStyle = TextStyle(
     color: Color.fromRGBO(99, 94, 226, 1),
@@ -19,14 +19,14 @@ class UserField extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            userName,
+            email,
             style: userStyle,
           ),
           MaterialButton(
             height: 25,
             minWidth: 20,
             child: Image.asset('assets/delete.png'),
-            onPressed: () => print('Privet')),
+            onPressed: onDelete ?? () {}),
         ],
       ),
     );
