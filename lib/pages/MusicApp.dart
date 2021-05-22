@@ -107,12 +107,7 @@ class _MusicAppState extends State<MusicApp> {
                   height: 25,
                   minWidth: 20,
                   child: Image.asset('assets/back.png'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SearchPage()),
-                    );
-                  },
+                  onPressed: () => Get.back()
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 12.0),
