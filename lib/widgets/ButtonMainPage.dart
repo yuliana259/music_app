@@ -5,13 +5,13 @@ enum SizeButton {
   SMALL,
 }
 
-class ButtonMainPage1 extends StatelessWidget {
-  SizeButton currentSize;
+class ButtonMainPage extends StatelessWidget {
+  final SizeButton currentSize;
   final String buttonText;
   final Function onPressed;
   final Color color;
 
-  ButtonMainPage1(this.currentSize,this.buttonText, {this.onPressed, this.color = const Color.fromRGBO(168, 219, 250, 1)});
+  ButtonMainPage(this.currentSize,this.buttonText, {this.onPressed, this.color = const Color.fromRGBO(168, 219, 250, 1)});
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +63,7 @@ class ButtonMainPage1 extends StatelessWidget {
             ),
           ),
         );
+      default: return Container();
     }
 
   }

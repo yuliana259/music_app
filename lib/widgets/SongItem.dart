@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/models/MusicModel.dart';
 
-class Song extends StatelessWidget {
-  final String artistName;
-  final String songName;
-  final Image image;
+
+
+class SongItem extends StatelessWidget {
+  final MusicModel music;
   final Function onPressed;
+  
 
-
-  Song(this.artistName, this.songName, this.image, {this.onPressed});
+  SongItem(this.music, {this.onPressed});
 
   final TextStyle textStyle = TextStyle(
     color: Color.fromRGBO(11, 7, 94, 1),
@@ -41,7 +42,7 @@ class Song extends StatelessWidget {
         child: Container(
           child: Row(
             children: [
-              image,
+              Image.network(music.imageUrl, width: 60, height: 60,),
               SizedBox(
                 width: 30,
               ),
@@ -49,14 +50,14 @@ class Song extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    trimName(artistName),
+                    trimName(music.artistName),
                     style: artistStyle,
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Text(
-                    trimName(songName),
+                    trimName(music.songName),
                     style: nameStyle,
                   ),
                 ],
