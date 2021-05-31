@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:music_app/pages/Login.dart';
 import 'package:music_app/widgets/GradientButton.dart';
 import 'package:music_app/widgets/HoleButton.dart';
@@ -39,10 +40,7 @@ class GreetGuest extends StatelessWidget {
               child: GradientButton(
                 'Log in',
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Login()),
-                  );
+                  Get.to(() => Login());
                 },
               ),
             ),
@@ -52,10 +50,7 @@ class GreetGuest extends StatelessWidget {
               child: HoleButton(
                 'Sign up',
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Registration()),
-                  );
+                  Get.to(() => Registration());
                 },
               ),
             )

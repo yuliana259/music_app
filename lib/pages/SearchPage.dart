@@ -7,7 +7,7 @@ import 'package:music_app/pages/MusicApp.dart';
 import 'package:music_app/repos/MusicRepo.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
 import 'package:music_app/widgets/SearchField.dart';
-import 'package:music_app/widgets/Song.dart';
+import 'package:music_app/widgets/SongItem.dart';
 
 class SearchPage extends StatelessWidget {
   final searchController = TextEditingController();
@@ -45,7 +45,7 @@ class SearchPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'title_search'.tr,
+                        'admin_songs'.tr,
                         style: textStyle,
                         textAlign: TextAlign.left,
                       ),
@@ -53,13 +53,13 @@ class SearchPage extends StatelessWidget {
                         height: 17,
                       ),
                       Container(
-                          // линия
+                        // линия
                           decoration: BoxDecoration(
-                              //borderRadius: BorderRadius.all(Radius.circular(2)),
+                            //borderRadius: BorderRadius.all(Radius.circular(2)),
                               gradient: LinearGradient(colors: [
-                            Color.fromRGBO(99, 94, 226, 1),
-                            Color.fromRGBO(168, 219, 250, 1),
-                          ])),
+                                Color.fromRGBO(99, 94, 226, 1),
+                                Color.fromRGBO(168, 219, 250, 1),
+                              ])),
                           height: 2),
                       SizedBox(height: 15),
                       Container(
@@ -74,35 +74,30 @@ class SearchPage extends StatelessWidget {
                   ),
                 ),
                 Obx(() { // Виджет для динамического отображения данных с потоков
-                    List<MusicModel> musics = musicsController.musics;
-                    if(musicsController.loading.value) {
-                      return Center(child: CircularProgressIndicator(),);
-                    }
-                    if (musics.length > 0) {
-                      return ListView.builder(
-                        itemCount: musics.length,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          MusicModel music = musics[index];
-                          return Container(
-                            padding: EdgeInsets.only(bottom: 8),
-                            child: Song(
-                              music.artistName,
-                              music.songName,
-                              Image.network(music.imageUrl, height: 60, width: 60,),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => MusicApp(music: music)),
-                                );
-                              },
-                            ),
-                          );
-                        },
-                      );
-                    }
-                    return Center(child: Text("Not Found"));
+                  List<MusicModel> musics = musicsController.musics;
+                  if(musicsController.loading.value) {
+                    return Center(child: CircularProgressIndicator(),);
+                  }
+                  if (musics.length > 0) {
+                    return ListView.builder(
+                      itemCount: musics.length,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        MusicModel music = musics[index];
+                        return Container(
+                          padding: EdgeInsets.only(bottom: 8),
+                          child: SongItem(
+                            music,
+                            onPressed: () {
+                              Get.to(() => MusicApp(music: music,));
+                            },
+                          ),
+                        );
+                      },
+                    );
+                  }
+                  return Center(child: Text("Not Found"));
                 },
                 ),
               ],

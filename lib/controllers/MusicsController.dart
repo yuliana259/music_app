@@ -16,6 +16,11 @@ class MusicsController extends GetxController {
     fetchMusics();
   }
 
+  void deleteMusic(MusicModel music) {
+    MusicRepo.deleteMusic(music);
+    musics.remove(music);
+  }
+
   void fetchMusics() async {
     loading.value = true;
     List<MusicModel> fetchedMusics = await MusicRepo.getMusics();

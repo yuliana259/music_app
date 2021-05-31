@@ -22,7 +22,7 @@ class UsersRepo {
     return await _users.where('email', isEqualTo: email).get().then((users) =>
         users.docs.length == 0
             ? null
-            : UserModel.fromJson(users.docs[0].data()));
+            : UserModel.fromJson(users.docs[0].data(), ));
   }
 
   static deleteUser(UserModel user) async {

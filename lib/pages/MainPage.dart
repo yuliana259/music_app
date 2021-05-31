@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_app/pages/ErrorPlaylist.dart';
 import 'package:music_app/pages/TopSongs.dart';
-import 'package:music_app/widgets/ButtonMainPage1.dart';
+import 'package:music_app/widgets/ButtonMainPage.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
 
 class MainPage extends StatelessWidget {
@@ -50,14 +50,11 @@ class MainPage extends StatelessWidget {
                 children: [
                   Container(
                     //margin: EdgeInsets.only(top: 1),
-                    child: ButtonMainPage1(
+                    child: ButtonMainPage(
                       SizeButton.BIG,
-                      'button1_main'.tr,
+                      'top_10_title'.tr,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => TopSongs()),
-                        );
+                        Get.to(() => TopSongs());
                       },
                     ),
                   ),
@@ -66,28 +63,20 @@ class MainPage extends StatelessWidget {
                     children: [
                       Container(
                         //margin: EdgeInsets.only(top: 10),
-                        child: ButtonMainPage1(
+                        child: ButtonMainPage(
                           SizeButton.SMALL,
-                          'button2_main'.tr,
+                          'russian_pop'.tr,
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ErrorPlaylist()),
-                            );
+                            Get.to(() => ErrorPlaylist());
                           },
                           color: Colors.green,
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 8),
-                        child: ButtonMainPage1(
-                            SizeButton.SMALL, 'button3_main'.tr, onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ErrorPlaylist()),
-                          );
+                        child: ButtonMainPage(
+                            SizeButton.SMALL, 'best_title'.tr, onPressed: () {
+                          Get.to(() => ErrorPlaylist());
                         }, color: Colors.amberAccent),
                       ),
                     ],
@@ -101,22 +90,18 @@ class MainPage extends StatelessWidget {
                     children: [
                       Container(
                         //margin: EdgeInsets.only(top: 10),
-                        child: ButtonMainPage1(
+                        child: ButtonMainPage(
                           SizeButton.SMALL,
-                          'button2_main'.tr,
+                          'russian_pop'.tr,
                           onPressed: () => Get.to(ErrorPlaylist()),
                           color: Colors.red,
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 8),
-                        child: ButtonMainPage1(
-                            SizeButton.SMALL, 'button3_main'.tr, onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ErrorPlaylist()),
-                          );
+                        child: ButtonMainPage(
+                            SizeButton.SMALL, 'best_title'.tr, onPressed: () {
+                          Get.to(() => ErrorPlaylist());
                         }, color: Colors.lightGreenAccent),
                       ),
                     ],
@@ -124,15 +109,11 @@ class MainPage extends StatelessWidget {
                   Spacer(),
                   Container(
                     //margin: EdgeInsets.only(top: 1),
-                    child: ButtonMainPage1(
+                    child: ButtonMainPage(
                       SizeButton.BIG,
-                      'button1_main'.tr,
+                      'top_10_title'.tr,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ErrorPlaylist()),
-                        );
+                        Get.to(() => ErrorPlaylist());
                       },
                       color: Colors.cyanAccent,
                     ),

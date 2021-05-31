@@ -5,7 +5,7 @@ import 'package:music_app/models/MusicModel.dart';
 import 'package:music_app/pages/MusicApp.dart';
 import 'package:music_app/widgets/BottomNavigation.dart';
 import 'package:music_app/pages/MainPage.dart';
-import 'package:music_app/widgets/Song.dart';
+import 'package:music_app/widgets/SongItem.dart';
 
 class TopSongs extends StatelessWidget {
   final TextStyle textStyle = TextStyle(
@@ -39,7 +39,7 @@ class TopSongs extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'titile_top'.tr,
+                    'title_top'.tr,
                     style: textStyle,
                     textAlign: TextAlign.left, //??????????
                   ),
@@ -70,15 +70,10 @@ class TopSongs extends StatelessWidget {
                           MusicModel music = musics[index];
                           return Container(
                             padding: EdgeInsets.only(bottom: 8),
-                            child: Song(
-                              music.artistName,
-                              music.songName,
-                              Image.network(music.imageUrl, height: 60, width: 60,),
+                            child: SongItem(
+                              music,
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => MusicApp(music: music)),
-                                );
+                                Get.to(() => MusicApp(music: music,));
                               },
                             ),
                           );

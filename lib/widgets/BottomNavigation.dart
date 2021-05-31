@@ -16,22 +16,13 @@ Widget BottomNavigation(NavigationItem currentNav, BuildContext context) =>
       onTap: (value) {
         switch (value) {
           case 0:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MainPage()),
-            );
+            Get.to(() => MainPage());
             break;
           case 1:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SearchPage()),
-            );
+            Get.to(() => SearchPage());
             break;
           case 2:
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => User()),
-            );
+            Get.to(() => User());
         }
       },
       currentIndex: currentNav.index,
@@ -42,7 +33,7 @@ Widget BottomNavigation(NavigationItem currentNav, BuildContext context) =>
             size: 30,
             color: Color.fromRGBO(40, 36, 138, 1),
           ),
-          label: 'first'.tr,
+          label: 'main_navigation_title'.tr,
         ),
         BottomNavigationBarItem(
           icon: Icon(
@@ -50,7 +41,7 @@ Widget BottomNavigation(NavigationItem currentNav, BuildContext context) =>
             size: 30,
             color: Color.fromRGBO(40, 36, 138, 1),
           ),
-          label: 'second'.tr,
+          label: 'search_navigation_title'.tr,
         ),
         BottomNavigationBarItem(
           icon: Icon(
@@ -58,7 +49,7 @@ Widget BottomNavigation(NavigationItem currentNav, BuildContext context) =>
             size: 30,
             color: Color.fromRGBO(40, 36, 138, 1),
           ),
-          label: 'third'.tr,
+          label: 'account_navigation_title'.tr,
         )
       ],
     );

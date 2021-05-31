@@ -18,7 +18,7 @@ class ErrorPlaylist extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 20),
               padding: EdgeInsets.only(top: 64, bottom: 36),
         child: Text(
-          'titile_error'.tr,
+          'title_error'.tr,
           style: textStyle,
           textAlign: TextAlign.center,
         ),
@@ -36,10 +36,7 @@ class ErrorPlaylist extends StatelessWidget {
               child: GradientButton(
                 'button_error'.tr,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainPage()),
-                  );
+                  Get.to(() => MainPage());
                 },
               ),
             ),

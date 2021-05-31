@@ -26,7 +26,7 @@ class RegistrationError extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.only(top: 15),
-                child: InputField(defaultValue: 'yulianka@blabla.by'),
+                child: InputField(defaultValue: 'test@gmail.com'),
               ),
               SizedBox(
                 height: 15,

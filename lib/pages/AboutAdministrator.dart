@@ -37,10 +37,7 @@ class AboutAdministrator extends StatelessWidget {
                     minWidth: 20,
                     child: Image.asset('assets/back.png'),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => User()),
-                      );
+                      Get.to(() => User());
                     },
                   ),
                   SizedBox(

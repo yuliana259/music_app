@@ -33,17 +33,14 @@ class Info extends StatelessWidget {
                     minWidth: 20,
                     child: Image.asset('assets/back.png'),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Settings()),
-                      );
+                      Get.to(() => Settings());
                     },
                   ),
                   SizedBox(
                     width: 60,
                   ),
                   Text(
-                    'title_app'.tr,
+                    'about_app'.tr,
                     style: headerStyle,
                   ),
                 ],

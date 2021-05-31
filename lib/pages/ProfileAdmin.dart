@@ -66,7 +66,7 @@ class ProfileAdmin extends StatelessWidget {
   }
 
   updateLocale(Locale locale, BuildContext context) {
-    Navigator.of(context).pop();
+    Get.back();
     Get.updateLocale(locale);
   }
 
@@ -87,7 +87,7 @@ class ProfileAdmin extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'title_admin'.tr,
+                    'title_admin_profile'.tr,
                     style: headerStyle,
                   ),
                 ],
@@ -123,67 +123,53 @@ class ProfileAdmin extends StatelessWidget {
               ),
               Container(
                   margin: EdgeInsets.only(top: 32),
-                  child: HoleButton('button_admin'.tr, onPressed: () {
+                  child: HoleButton('button_admin_exit'.tr, onPressed: () {
                     FirebaseAuth.instance.signOut();
                     Get.offAll(() => GreetGuest());
                   })),
               SizedBox(
                 height: 45,
               ),
-              Row(
-                children: [
-                  Text(
-                    'button1_admin'.tr,
-                    style: textStyle,
-                  ),
-                  Spacer(),
-                  MaterialButton(
-                    height: 25,
-                    minWidth: 20,
-                    child: Image.asset('assets/to.png'),
-                    onPressed: () => showLocaleDialog(context),
-                  ),
-                ],
+              InkWell(
+                onTap: () => showLocaleDialog(context),
+                child: Row(
+                  children: [
+                    Text(
+                      'button_admin_change_language'.tr,
+                      style: textStyle,
+                    ),
+                    Spacer(),
+                    Image.asset('assets/to.png'),
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  Text(
-                    'button2_admin'.tr,
-                    style: textStyle,
-                  ),
-                  Spacer(),
-                  MaterialButton(
-                    height: 25,
-                    minWidth: 20,
-                    child: Image.asset('assets/to.png'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => BaseUsers()),
-                      );
-                    },
-                  ),
-                ],
+              SizedBox(height: 15,),
+              InkWell(
+                onTap: () => Get.to(() => BaseUsers()),
+                child: Row(
+                  children: [
+                    Text(
+                      'admin_users'.tr,
+                      style: textStyle,
+                    ),
+                    Spacer(),
+                    Image.asset('assets/to.png'),
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  Text(
-                    'button3_admin'.tr,
-                    style: textStyle,
-                  ),
-                  Spacer(),
-                  MaterialButton(
-                    height: 25,
-                    minWidth: 20,
-                    child: Image.asset('assets/to.png'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SongsAdmin()),
-                      );
-                    },
-                  ),
-                ],
+              SizedBox(height: 15,),
+              InkWell(
+                onTap: () => Get.to(() => SongsAdmin()),
+                child: Row(
+                  children: [
+                    Text(
+                      'admin_songs'.tr,
+                      style: textStyle,
+                    ),
+                    Spacer(),
+                    Image.asset('assets/to.png')
+                  ],
+                ),
               ),
             ],
           ),

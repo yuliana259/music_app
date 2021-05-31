@@ -55,7 +55,7 @@ class Settings extends StatelessWidget {
   }
 
   updateLocale(Locale locale, BuildContext context) {
-    Navigator.of(context).pop();
+    Get.back();
     Get.updateLocale(locale);
   }
 
@@ -78,10 +78,7 @@ class Settings extends StatelessWidget {
                     minWidth: 20,
                     child: Image.asset('assets/back.png'),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => User()),
-                      );
+                      Get.back();
                     },
                   ),
                   SizedBox(
@@ -103,43 +100,34 @@ class Settings extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  Text(
-                    'button1_settings'.tr,
-                    style: textStyle,
-                  ),
-                  Spacer(),
-                  MaterialButton(
-                    height: 25,
-                    minWidth: 20,
-                    child: Image.asset('assets/to.png'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Info()),
-                      );
-                    },
-                  ),
-                ],
+              InkWell(
+                onTap: () => Get.to(() => Info()),
+                child: Row(
+                  children: [
+                    Text(
+                      'about_app'.tr,
+                      style: textStyle,
+                    ),
+                    Spacer(),
+                    Image.asset('assets/to.png', height: 25, width: 20,),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 10,
               ),
-              Row(
-                children: [
-                  Text(
-                    'button2_settings'.tr,
-                    style: textStyle,
-                  ),
-                  Spacer(),
-                  MaterialButton(
-                    height: 25,
-                    minWidth: 20,
-                    child: Image.asset('assets/to.png'),
-                    onPressed: () => showLocaleDialog(context),
-                  ),
-                ],
+              InkWell(
+                onTap: () => showLocaleDialog(context),
+                child: Row(
+                  children: [
+                    Text(
+                      'change_language'.tr,
+                      style: textStyle,
+                    ),
+                    Spacer(),
+                    Image.asset('assets/to.png', height: 25, width: 20,),
+                  ],
+                ),
               ),
             ],
           ),

@@ -37,7 +37,7 @@ class User extends StatelessWidget {
                 // вместо текста вставить кнопки с иконками(картинками)
                 children: [
                   Text(
-                    'title_user'.tr,
+                    'title_user_profile'.tr,
                     style: headerStyle,
                   ),
                   Spacer(),
@@ -46,10 +46,7 @@ class User extends StatelessWidget {
                     minWidth: 20,
                     child: Image.asset('assets/settings.png'),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Settings()),
-                      );
+                      Get.to(() => Settings());
                     },
                   ),
                 ],
@@ -83,20 +80,16 @@ class User extends StatelessWidget {
               Container(
                   margin: EdgeInsets.only(top: 123),
                   child: GradientButton(
-                    'button1_user'
+                    'admins_title'
                         .tr, // изменить нажатие на кнопку администраторы
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AboutAdministrator()),
-                      );
+                      Get.to(() => AboutAdministrator());
                     },
                   )),
               Container(
                   margin: EdgeInsets.only(top: 32),
                   child: HoleButton(
-                    'button2_user'.tr,
+                    'exit_user_button'.tr,
                     onPressed: () {
                       FirebaseAuth.instance.signOut();
                       Get.offAll(() => GreetGuest());

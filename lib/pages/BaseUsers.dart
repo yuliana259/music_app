@@ -38,10 +38,7 @@ class BaseUsers extends StatelessWidget {
                     minWidth: 20,
                     child: Image.asset('assets/back.png'),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ProfileAdmin()),
-                      );
+                      Get.to(() => ProfileAdmin());
                     },
                   ),
                   SizedBox(
@@ -53,7 +50,7 @@ class BaseUsers extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 19),
                         child: Text(
-                          'title_users'.tr,
+                          'admin_users'.tr,
                           style: headerStyle,
                         ),
                       ),

@@ -1,5 +1,6 @@
 class MusicModel {
   int index;
+  String uid;
   String songUrl;
   String imageUrl;
   String songName;
@@ -7,7 +8,8 @@ class MusicModel {
 
   MusicModel({this.songUrl, this.imageUrl, this.songName, this.artistName});
 
-  MusicModel.fromJson(Map<String, dynamic> json) {
+  MusicModel.fromJson(Map<String, dynamic> json, String uid) {
+    this.uid = uid;
     songUrl = json['song_url'];
     imageUrl = json['image_url'];
     songName = json['song_name'];

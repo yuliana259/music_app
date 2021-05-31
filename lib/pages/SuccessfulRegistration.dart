@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:music_app/pages/MainPage.dart';
 import 'package:music_app/widgets/GradientButton.dart';
 import 'package:music_app/widgets/HoleButton.dart';
@@ -40,10 +41,7 @@ class SuccessfulRegistration extends StatelessWidget {
               child: GradientButton(
                 'Go',
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainPage()),
-                  );
+                  Get.to(() => MainPage());
                 },
               ),
             ),

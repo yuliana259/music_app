@@ -34,7 +34,7 @@ class Login extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.only(top: 15),
-                    child: InputField(defaultValue: 'yulianka@blabla.by', controller: email,),
+                    child: InputField(defaultValue: 'test@gmail.com', controller: email,),
                   ),
                   Container(
                     padding: EdgeInsets.only(top: 30),
